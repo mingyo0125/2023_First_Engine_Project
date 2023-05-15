@@ -6,8 +6,5 @@ public class Arrow : PoolableMono
 {
     public override void Init()
     {
-        Debug.Log("Init");
     }
-
-    
 }

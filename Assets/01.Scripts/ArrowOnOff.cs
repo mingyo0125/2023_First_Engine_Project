@@ -19,12 +19,36 @@ public class ArrowOnOff : MonoBehaviour
 
     private void CreateArrow()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 5; i++)
         {
-            Arrow arrow = PoolManager.Instance.Pop("Test") as Arrow;
-            _arrowList.Add(arrow);
-            arrow.transform.position = new Vector3(_arrowPosition.x + (10 * i),0,0);
+            int rand = UnityEngine.Random.Range(1, 5);
+
+            switch (rand)
+            {
+                case 1:
+                    Arrow left = PoolManager.Instance.Pop("Left") as Arrow;
+                    _arrowList.Add(left);
+                    break;
+                case 2:
+                    Arrow right = PoolManager.Instance.Pop("Right") as Arrow;
+                    _arrowList.Add(right);
+                    break;
+                case 3:
+                    Arrow up = PoolManager.Instance.Pop("Up") as Arrow;
+                    _arrowList.Add(up);
+                    break;
+                case 4:
+                    Arrow down = PoolManager.Instance.Pop("Down") as Arrow;
+                    _arrowList.Add(down);
+                    break;
+            }
         }
+
+        for (int i = 0; i < _arrowList.Count; i++)
+        {
+            _arrowList[i].transform.position = new Vector3(_arrowPosition.x + (10 * i), 0, 0);
+        }
+
     }
 
     private void Update()
@@ -33,6 +57,16 @@ public class ArrowOnOff : MonoBehaviour
         {
             PoolManager.Instance.Push(_arrowList[_arrowCount]);
             _arrowCount++;
+        }
+
+        //CheckIndex();
+    }
+
+    private void CheckIndex()
+    {
+        if (_arrowList[0] == null)
+        {
+            _arrowCount = 0;
         }
     }
 }
