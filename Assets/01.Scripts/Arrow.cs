@@ -7,6 +7,7 @@ public class Arrow : PoolableMono
 {
     public override void Init()
     {
+
     }
 
 }

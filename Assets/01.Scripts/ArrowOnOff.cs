@@ -1,4 +1,4 @@
-  using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,7 +13,7 @@ public class ArrowOnOff : MonoBehaviour
     private Vector3 _arrowPosition;
 
     [SerializeField]
-    List<KeyCode> _keyList = new List<KeyCode> { KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.DownArrow};
+    List<KeyCode> _keyList = new List<KeyCode> { KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.DownArrow };
 
     int _arrowCount = 0;
 
@@ -24,7 +24,7 @@ public class ArrowOnOff : MonoBehaviour
 
     private void CreateArrow()
     {
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             int rand = UnityEngine.Random.Range(1, 5);
 
@@ -60,9 +60,9 @@ public class ArrowOnOff : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            foreach(var key in _keyList)
+            foreach (var key in _keyList)
             {
-                if(Input.GetKeyDown(key))
+                if (Input.GetKeyDown(key))
                 {
                     PoolManager.Instance.Push(_arrowList[_arrowCount]);
                     _arrowCount++;
@@ -70,7 +70,7 @@ public class ArrowOnOff : MonoBehaviour
             }
         }
 
-        if(_arrowCount == _arrowList.Count)
+        if (_arrowCount == _arrowList.Count)
         {
             _arrowCount = 0;
             _arrowList.Clear();
