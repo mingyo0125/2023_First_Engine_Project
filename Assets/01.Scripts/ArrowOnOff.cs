@@ -13,12 +13,14 @@ public class ArrowOnOff : MonoBehaviour
     private Vector3 _arrowPosition;
 
     int _arrowCount = 0;
+    int[] _randArr;
 
-    private void CreateArrow()
+    private void CreateArrow(int _rand)
     {
         for (int i = 0; i < 5; i++)
         {
-            int rand = UnityEngine.Random.Range(1, 5);
+            int rand = _rand;
+            _randArr[i] = rand;
 
             switch (rand)
             {
@@ -57,9 +59,13 @@ public class ArrowOnOff : MonoBehaviour
                 PoolManager.Instance.Push(_arrowList[_arrowCount]);
                 _arrowCount++;
             }
-            else
-            {
 
+            else if(Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+            {
+                for(int i = 0; i < _arrowList.Count; i++)
+                {
+                    CreateArrow(_randArr[i]);
+                }
             }
         }
 
@@ -67,7 +73,12 @@ public class ArrowOnOff : MonoBehaviour
         {
             _arrowCount = 0;
             _arrowList.Clear();
-            CreateArrow();
+
+            for(int i = 0; i < 5; i++)
+            {
+                int rand = UnityEngine.Random.Range(1, 5);
+                CreateArrow(rand);
+            }
         }
 
     }

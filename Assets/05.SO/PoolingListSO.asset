@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   List:
   - prefab: {fileID: 4613704156804993168, guid: b4aa5a117ada8064d9cd988199196b06, type: 3}
-    poolCount: 5
+    poolCount: 3
   - prefab: {fileID: 5519922590006134998, guid: ac865eed8f9a07c4ea796e4a687d4d44, type: 3}
-    poolCount: 5
+    poolCount: 3
   - prefab: {fileID: 5354474223117826117, guid: 69c83d914d4cc8c4785eda1c3e3c3a7e, type: 3}
-    poolCount: 5
+    poolCount: 3
   - prefab: {fileID: -4273901246802632891, guid: f52c9f575494f73459442bcebd4f2126, type: 3}
-    poolCount: 5
+    poolCount: 3
