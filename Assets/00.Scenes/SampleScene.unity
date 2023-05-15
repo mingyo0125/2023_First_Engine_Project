@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowList: []
-  _arrowPosition: {x: 0, y: 0, z: 0}
+  _arrowPosition: {x: -5, y: 0, z: 0}
   _keyList: 13010000140100001101000012010000
 --- !u!1 &1670287494
 GameObject:

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Arrow : PoolableMono
 {
+    public KeyCode keyCode;
     public override void Init()
     {
 

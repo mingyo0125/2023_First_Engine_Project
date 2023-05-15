@@ -12,15 +12,7 @@ public class ArrowOnOff : MonoBehaviour
     [SerializeField]
     private Vector3 _arrowPosition;
 
-    [SerializeField]
-    List<KeyCode> _keyList = new List<KeyCode> { KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.DownArrow };
-
     int _arrowCount = 0;
-
-    //void Start()
-    //{
-    //    CreateArrow();
-    //}
 
     private void CreateArrow()
     {
@@ -60,13 +52,14 @@ public class ArrowOnOff : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            foreach (var key in _keyList)
+            if (Input.GetKeyDown(_arrowList[_arrowCount].keyCode))
             {
-                if (Input.GetKeyDown(key))
-                {
-                    PoolManager.Instance.Push(_arrowList[_arrowCount]);
-                    _arrowCount++;
-                }
+                PoolManager.Instance.Push(_arrowList[_arrowCount]);
+                _arrowCount++;
+            }
+            else
+            {
+
             }
         }
 
