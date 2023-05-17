@@ -3,20 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class ArrowOnOff : MonoBehaviour
 {
+    public UnityEvent CreateArrow;
     [SerializeField]
     private List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
     private Vector3 _arrowPosition;
+    [SerializeField]
+    private int _arrowNum = 5;
 
     int _arrowCount = 0;
     int[] _randArr = new int[5];
 
-    private void CreateArrow(int _rand)
+    private void InitArrow(int _rand)
     {
         int rand = _rand;
 
@@ -66,9 +70,9 @@ public class ArrowOnOff : MonoBehaviour
                 _arrowCount = 0;
                 _arrowList.Clear();
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < _arrowNum; i++)
                 {
-                    CreateArrow(_randArr[i]);
+                    InitArrow(_randArr[i]);
                 }
 
             }
@@ -76,15 +80,15 @@ public class ArrowOnOff : MonoBehaviour
 
         if (_arrowCount == _arrowList.Count)
         {
+            CreateArrow?.Invoke();
             _arrowCount = 0;
             _arrowList.Clear();
 
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < _arrowNum; i++)
             {
                 int rand = UnityEngine.Random.Range(1, 5);
                 _randArr[i] = rand;
-                Debug.Log($"randArr{i} : {rand}");
-                CreateArrow(rand);
+                InitArrow(rand);
             }
         }
 
