@@ -9,7 +9,8 @@ using UnityEngine.XR;
 
 public class ArrowOnOff : MonoBehaviour
 {
-    public UnityEvent CreateArrow;
+    public UnityEvent FailEvent;
+
     [SerializeField]
     private List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
@@ -60,31 +61,18 @@ public class ArrowOnOff : MonoBehaviour
                 PoolManager.Instance.Push(_arrowList[_arrowCount]);
                 _arrowCount++;
             }
-            else if(!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+            else if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
             {
-                for(int i = 0; i < _arrowList.Count; i++)
-                {
-                    PoolManager.Instance.Push(_arrowList[i]);
-                }
-
-                _arrowCount = 0;
-                _arrowList.Clear();
-
-                for (int i = 0; i < _arrowNum; i++)
-                {
-                    InitArrow(_randArr[i]);
-                }
-
+                FailEvent?.Invoke();
             }
         }
 
         if (_arrowCount == _arrowList.Count)
         {
-            CreateArrow?.Invoke();
             _arrowCount = 0;
             _arrowList.Clear();
 
-            for(int i = 0; i < _arrowNum; i++)
+            for (int i = 0; i < _arrowNum; i++)
             {
                 int rand = UnityEngine.Random.Range(1, 5);
                 _randArr[i] = rand;
@@ -93,4 +81,21 @@ public class ArrowOnOff : MonoBehaviour
         }
 
     }
+
+    public void ReSetArrow()
+    {
+        for (int i = 0; i < _arrowList.Count; i++)
+        {
+            PoolManager.Instance.Push(_arrowList[i]);
+        }
+
+        _arrowCount = 0;
+        _arrowList.Clear();
+
+        for (int i = 0; i < _arrowNum; i++)
+        {
+            InitArrow(_randArr[i]);
+        }
+    }
+
 }
