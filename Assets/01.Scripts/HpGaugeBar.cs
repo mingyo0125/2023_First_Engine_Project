@@ -15,7 +15,8 @@ public class HpGaugeBar : MonoBehaviour
     private float _currentHp;
     [SerializeField]
     private float _minusValue;
-    private float _roundCnt = 1;
+    [SerializeField]
+    private float _roundCnt = 0;
 
     [SerializeField]
     private Image _hpBar;
@@ -38,7 +39,7 @@ public class HpGaugeBar : MonoBehaviour
     {
         while (_currentHp != 0)
         {
-            _currentHp -= 0.1f;
+            _currentHp -= _roundCnt * 0.05f;
             _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
             _hpBar.fillAmount = _currentHp / _maxHp;
             yield return new WaitForSeconds(0.01f);
@@ -49,5 +50,11 @@ public class HpGaugeBar : MonoBehaviour
     public void HpMinus()
     {
         _currentHp -= _roundCnt * _minusValue;
+    }
+
+    public void HpReset()
+    {
+        _currentHp = _maxHp;
+        _roundCnt++;
     }
 }

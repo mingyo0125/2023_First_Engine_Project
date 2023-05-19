@@ -6,11 +6,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
+using TMPro;
 
 public class ArrowOnOff : MonoBehaviour
 {
     public UnityEvent FailEvent;
+    public UnityEvent SuccesEvent;
 
+    [SerializeField]
+    private TextMeshPro text;
     [SerializeField]
     private List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
@@ -19,13 +23,13 @@ public class ArrowOnOff : MonoBehaviour
     private int _arrowNum = 5;
 
     int _arrowCount = 0;
+    int _succesCount = 0;
     int[] _randArr = new int[5];
 
     private void InitArrow(int _rand)
     {
-        int rand = _rand;
-
-        switch (rand)
+        Debug.Log(_rand);
+        switch (_rand)
         {
             case 1:
                 Arrow left = PoolManager.Instance.Pop("Left") as Arrow;
@@ -54,6 +58,7 @@ public class ArrowOnOff : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.anyKeyDown)
         {
             if (Input.GetKeyDown(_arrowList[_arrowCount].keyCode))
@@ -69,17 +74,24 @@ public class ArrowOnOff : MonoBehaviour
 
         if (_arrowCount == _arrowList.Count)
         {
-            _arrowCount = 0;
-            _arrowList.Clear();
-
-            for (int i = 0; i < _arrowNum; i++)
-            {
-                int rand = UnityEngine.Random.Range(1, 5);
-                _randArr[i] = rand;
-                InitArrow(rand);
-            }
+            SuccesEvent?.Invoke();
         }
 
+    }
+
+    public void Succes()
+    {
+        text.SetText(_succesCount.ToString());
+        _succesCount++;
+        _arrowCount = 0;
+        _arrowList.Clear();
+
+        for (int i = 0; i < _arrowNum; i++)
+        {
+            int rand = UnityEngine.Random.Range(1, 5);
+            _randArr[i] = rand;
+            InitArrow(rand);
+        }
     }
 
     public void ReSetArrow()
