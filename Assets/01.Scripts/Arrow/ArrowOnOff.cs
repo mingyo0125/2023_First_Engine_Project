@@ -22,92 +22,100 @@ public class ArrowOnOff : MonoBehaviour
     [SerializeField]
     private int _arrowNum = 5;
 
-    int _arrowCount = 0;
-    int _succesCount = 0;
+    [SerializeField]
+    int _succesArrowCount = 0;
+    int _roundCount = 0;
     int[] _randArr = new int[5];
 
-    private void InitArrow(int _rand)
+    [SerializeField]
+    private bool isCreating;
+
+    private IEnumerator InitArrow()
     {
-        Debug.Log(_rand);
-        switch (_rand)
+        for(int i = 0; i< _arrowNum; i++)
         {
-            case 1:
-                Arrow left = PoolManager.Instance.Pop("Left") as Arrow;
-                _arrowList.Add(left);
-                break;
-            case 2:
-                Arrow right = PoolManager.Instance.Pop("Right") as Arrow;
-                _arrowList.Add(right);
-                break;
-            case 3:
-                Arrow up = PoolManager.Instance.Pop("Up") as Arrow;
-                _arrowList.Add(up);
-                break;
-            case 4:
-                Arrow down = PoolManager.Instance.Pop("Down") as Arrow;
-                _arrowList.Add(down);
-                break;
-        }
+            isCreating = true;
+            switch (_randArr[i])
+            {
+                case 1:
+                    Arrow left = PoolManager.Instance.Pop("Left") as Arrow;
+                    _arrowList.Add(left);
+                    break;
+                case 2:
+                    Arrow right = PoolManager.Instance.Pop("Right") as Arrow;
+                    _arrowList.Add(right);
+                    break;
+                case 3:
+                    Arrow up = PoolManager.Instance.Pop("Up") as Arrow;
+                    _arrowList.Add(up);
+                    break;
+                case 4:
+                    Arrow down = PoolManager.Instance.Pop("Down") as Arrow;
+                    _arrowList.Add(down);
+                    break;
+            }
 
-        for (int i = 0; i < _arrowList.Count; i++)
-        {
             _arrowList[i].transform.position = new Vector3(_arrowPosition.x + (3 * i), 0, 0);
+            yield return new WaitForSeconds(0.1f);
+            isCreating = false;
         }
-
     }
 
     private void Update()
     {
+        if(isCreating) { return; }
+
+        if (_succesArrowCount == _arrowList.Count)
+        {
+            SuccesEvent?.Invoke();
+        }
 
         if (Input.anyKeyDown)
         {
-            if (Input.GetKeyDown(_arrowList[_arrowCount].keyCode))
+            if (Input.GetKeyDown(_arrowList[_succesArrowCount].keyCode) && !isCreating)
             {
-                PoolManager.Instance.Push(_arrowList[_arrowCount]);
-                _arrowCount++;
+                PoolManager.Instance.Push(_arrowList[_succesArrowCount]);
+                _succesArrowCount++;
             }
-            else if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+            else if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2) && !isCreating)
             {
                 FailEvent?.Invoke();
             }
-        }
-
-        if (_arrowCount == _arrowList.Count)
-        {
-            SuccesEvent?.Invoke();
         }
 
     }
 
     public void Succes()
     {
-        text.SetText(_succesCount.ToString());
-        _succesCount++;
-        _arrowCount = 0;
+        text.SetText(_roundCount.ToString());
+        _roundCount++;
+
+
+        _succesArrowCount = 0;
         _arrowList.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
         {
             int rand = UnityEngine.Random.Range(1, 5);
             _randArr[i] = rand;
-            InitArrow(rand);
         }
+
+        StopAllCoroutines();
+        StartCoroutine(InitArrow());
     }
 
     public void ReSetArrow()
     {
-        for (int i = 0; i < _arrowList.Count; i++)
+        for (int i = 0; i < _arrowNum; i++)
         {
             PoolManager.Instance.Push(_arrowList[i]);
         }
 
-        _arrowCount = 0;
+        _succesArrowCount = 0;
         _arrowList.Clear();
 
-        for (int i = 0; i < _arrowNum; i++)
-        {
-            InitArrow(_randArr[i]);
-        }
+        StopAllCoroutines();
+        StartCoroutine(InitArrow());
     }
 
 }
