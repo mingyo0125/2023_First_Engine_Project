@@ -24,7 +24,6 @@ public class HpGaugeBar : MonoBehaviour
     private void Awake()
     {
         _currentHp = _maxHp;
-        StartCoroutine(DecreseHP());
     }
 
     private void Update()
@@ -35,26 +34,10 @@ public class HpGaugeBar : MonoBehaviour
         }
     }
 
-    private IEnumerator DecreseHP()
-    {
-        while (_currentHp != 0)
-        {
-            _currentHp -= _roundCnt * 0.05f;
-            _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
-            _hpBar.fillAmount = _currentHp / _maxHp;
-            yield return new WaitForSeconds(0.01f);
-        }
-        
-    }
-
     public void HpMinus()
     {
         _currentHp -= _roundCnt * _minusValue;
+        _hpBar.fillAmount = _currentHp / _maxHp;
     }
 
-    public void HpReset()
-    {
-        _currentHp = _maxHp;
-        _roundCnt++;
-    }
 }
