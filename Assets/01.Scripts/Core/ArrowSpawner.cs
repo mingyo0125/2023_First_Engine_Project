@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 using TMPro;
 
-public class InputManager : MonoBehaviour
+public class ArrowSpawner : MonoBehaviour
 {
     public UnityEvent FailEvent;
     public UnityEvent SuccesEvent;
@@ -78,14 +78,12 @@ public class InputManager : MonoBehaviour
     {
         if (keyCode == _arrowList[_succesArrowCount].keyCode.ToString())
         {
-            Debug.Log("312");
             PoolManager.Instance.Push(_arrowList[_succesArrowCount]);
             _succesArrowCount++;
         }
         else
         {
             FailEvent?.Invoke();
-
         }
     }    
 
