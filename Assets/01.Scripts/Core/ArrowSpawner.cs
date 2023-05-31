@@ -4,32 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
-using TMPro;
 
 public class ArrowSpawner : MonoBehaviour
 {
     public UnityEvent FailEvent;
     public UnityEvent SuccesEvent;
-
-    [SerializeField]
-    private TextMeshPro text;
-    [SerializeField]
-    private List<Arrow> _arrowList = new List<Arrow>();
-    [SerializeField]
-    private Vector3 _arrowPosition;
+    
     [SerializeField]
     private int _arrowNum = 5;
 
+    private List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
-    int _succesArrowCount = 0;
-    int _roundCount = 0;
-
-    [SerializeField]
+    private Transform _arrowPosition;
+    
+    int succesArrowCount = 0;
+    int roundCount = 0;
     private bool isCreating;
 
     private IEnumerator InitArrow()
     {
-        _succesArrowCount = 0;
+        succesArrowCount = 0;
         _arrowList.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
@@ -56,8 +50,7 @@ public class ArrowSpawner : MonoBehaviour
                     break;
             }
 
-            _arrowList[i].transform.position = new Vector3(_arrowPosition.x + (3 * i), 0, 0);
-            Debug.Log($"Name: {_arrowList[i].name} Pos:{ _arrowList[i].transform.position}");
+            _arrowList[i].transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, 5, 0);
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -68,7 +61,7 @@ public class ArrowSpawner : MonoBehaviour
     {
         if(isCreating) { return; }
 
-        if (_succesArrowCount == _arrowList.Count)
+        if (succesArrowCount == _arrowList.Count)
         {
             SuccesEvent?.Invoke();
         }
@@ -76,10 +69,10 @@ public class ArrowSpawner : MonoBehaviour
 
     public void ClickButton(string keyCode)
     {
-        if (keyCode == _arrowList[_succesArrowCount].keyCode.ToString())
+        if (keyCode == _arrowList[succesArrowCount].keyCode.ToString())
         {
-            PoolManager.Instance.Push(_arrowList[_succesArrowCount]);
-            _succesArrowCount++;
+            PoolManager.Instance.Push(_arrowList[succesArrowCount]);
+            succesArrowCount++;
         }
         else
         {
@@ -89,8 +82,8 @@ public class ArrowSpawner : MonoBehaviour
 
     public void Succes()
     {
-        text.SetText(_roundCount.ToString());
-        _roundCount++;
+        //text.SetText(_roundCount.ToString());
+        roundCount++;
 
         StopAllCoroutines();
         StartCoroutine(InitArrow());
