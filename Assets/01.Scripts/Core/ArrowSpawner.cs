@@ -7,29 +7,35 @@ using UnityEngine.UIElements;
 
 public class ArrowSpawner : MonoBehaviour
 {
-    public UnityEvent FailEvent;
-    public UnityEvent SuccesEvent;
-    
     [SerializeField]
     private int _arrowNum = 5;
 
-    private List<Arrow> _arrowList = new List<Arrow>();
+    public List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
     private Transform _arrowPosition;
-    
-    int succesArrowCount = 0;
+
+    [SerializeField]
     int roundCount = 0;
     private bool isCreating;
 
+    int temp;
+
+    #region prop
+
+    public bool IsCreating => isCreating;
+    public int RoundCount => roundCount;
+
+    #endregion
+
     private IEnumerator InitArrow()
     {
-        succesArrowCount = 0;
+        isCreating = true;
+
         _arrowList.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
         {
             int rand = UnityEngine.Random.Range(1, 5);
-            isCreating = true;
             switch (rand)
             {
                 case 1:
@@ -57,32 +63,9 @@ public class ArrowSpawner : MonoBehaviour
         isCreating = false;
     }
 
-    private void Update()
-    {
-        if(isCreating) { return; }
-
-        if (succesArrowCount == _arrowList.Count)
-        {
-            SuccesEvent?.Invoke();
-        }
-    }
-
-    public void ClickButton(string keyCode)
-    {
-        if (keyCode == _arrowList[succesArrowCount].keyCode.ToString())
-        {
-            PoolManager.Instance.Push(_arrowList[succesArrowCount]);
-            succesArrowCount++;
-        }
-        else
-        {
-            FailEvent?.Invoke();
-        }
-    }    
-
     public void Succes()
     {
-        //text.SetText(_roundCount.ToString());
+        //text.SetText(_rouCount.ToString());
         roundCount++;
 
         StopAllCoroutines();
@@ -91,9 +74,8 @@ public class ArrowSpawner : MonoBehaviour
 
     public void ReSetArrow()
     {
-        for (int i = 0; i < _arrowNum; i++)
+        for (int i = 0; i < _arrowList.Count; i++)
         {
-            Debug.Log("»ç¶óÁü2");
             PoolManager.Instance.Push(_arrowList[i]);
         }
 
