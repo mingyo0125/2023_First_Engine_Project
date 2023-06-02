@@ -7,6 +7,17 @@ using UnityEngine.UIElements;
 
 public class ArrowSpawner : MonoBehaviour
 {
+    public static ArrowSpawner Instance;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Debug.LogError("ArrowSpawner가 두개지요");
+        }
+        Instance = this;
+    }
+
     [SerializeField]
     private int _arrowNum = 5;
 
@@ -17,9 +28,6 @@ public class ArrowSpawner : MonoBehaviour
     [SerializeField]
     int roundCount = 0;
     private bool isCreating;
-
-    private bool isFirst;
-
 
     #region prop
 
@@ -35,24 +43,7 @@ public class ArrowSpawner : MonoBehaviour
 
         for (int i = 0; i < _arrowNum; i++)
         {
-            int rand = UnityEngine.Random.Range(1, 5);
-            Arrow arrow = null;
-
-            switch (rand)
-            {
-                case 1:
-                    arrow = PoolManager.Instance.Pop("Left") as Arrow;
-                    break;
-                case 2:
-                    arrow = PoolManager.Instance.Pop("Right") as Arrow;
-                    break;
-                case 3:
-                    arrow = PoolManager.Instance.Pop("Up") as Arrow;
-                    break;
-                case 4:
-                    arrow = PoolManager.Instance.Pop("Down") as Arrow;
-                    break;
-            }
+            Arrow arrow = PoolManager.Instance.Pop("Arrow") as Arrow;
 
             arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, 5, 0);
             _arrowList.Add(arrow);
@@ -76,7 +67,6 @@ public class ArrowSpawner : MonoBehaviour
     public void ReSetArrow()
     {
         StopAllCoroutines();
-
         for (int i = 0; i < _arrowList.Count; i++)
         {
             if (_arrowList[i] == null)
