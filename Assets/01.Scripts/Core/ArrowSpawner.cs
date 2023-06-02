@@ -18,7 +18,8 @@ public class ArrowSpawner : MonoBehaviour
     int roundCount = 0;
     private bool isCreating;
 
-    int temp;
+    private bool isFirst;
+
 
     #region prop
 
@@ -30,38 +31,38 @@ public class ArrowSpawner : MonoBehaviour
     private IEnumerator InitArrow()
     {
         isCreating = true;
-
         _arrowList.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
         {
             int rand = UnityEngine.Random.Range(1, 5);
+            Arrow arrow = null;
+
             switch (rand)
             {
                 case 1:
-                    Arrow left = PoolManager.Instance.Pop("Left") as Arrow;
-                    _arrowList.Add(left);
+                    arrow = PoolManager.Instance.Pop("Left") as Arrow;
                     break;
                 case 2:
-                    Arrow right = PoolManager.Instance.Pop("Right") as Arrow;
-                    _arrowList.Add(right);
+                    arrow = PoolManager.Instance.Pop("Right") as Arrow;
                     break;
                 case 3:
-                    Arrow up = PoolManager.Instance.Pop("Up") as Arrow;
-                    _arrowList.Add(up);
+                    arrow = PoolManager.Instance.Pop("Up") as Arrow;
                     break;
                 case 4:
-                    Arrow down = PoolManager.Instance.Pop("Down") as Arrow;
-                    _arrowList.Add(down);
+                    arrow = PoolManager.Instance.Pop("Down") as Arrow;
                     break;
             }
 
-            _arrowList[i].transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, 5, 0);
+            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, 5, 0);
+            _arrowList.Add(arrow);
+
             yield return new WaitForSeconds(0.1f);
         }
 
         isCreating = false;
     }
+
 
     public void Succes()
     {
@@ -74,13 +75,18 @@ public class ArrowSpawner : MonoBehaviour
 
     public void ReSetArrow()
     {
+        StopAllCoroutines();
+
         for (int i = 0; i < _arrowList.Count; i++)
         {
+            if (_arrowList[i] == null)
+            {
+                continue;
+            }
             PoolManager.Instance.Push(_arrowList[i]);
         }
 
-        StopAllCoroutines();
-        StartCoroutine(InitArrow());
+        _arrowList.Clear();
     }
 
 }
