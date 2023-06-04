@@ -11,16 +11,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private int succesArrowCount = 0;
 
-    ArrowSpawner _arrowSpawner;
-
-    private void Awake()
-    {
-        _arrowSpawner = GetComponent<ArrowSpawner>();
-    }
-
     private void Update()
     {
-        if (succesArrowCount == _arrowSpawner._arrowList.Count && !_arrowSpawner.IsCreating)
+        if (succesArrowCount == ArrowSpawner.Instance._arrowList.Count && !ArrowSpawner.Instance.IsCreating)
         {
             succesArrowCount = 0;
             SuccesEvent?.Invoke();
@@ -29,9 +22,9 @@ public class InputManager : MonoBehaviour
 
     public void ClickButton(string keyCode)
     {
-        if (keyCode == _arrowSpawner._arrowList[succesArrowCount].keyCode.ToString())
+        if (keyCode == ArrowSpawner.Instance._arrowList[succesArrowCount].keyCode.ToString())
         {
-            PoolManager.Instance.Push(_arrowSpawner._arrowList[succesArrowCount]);
+            PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[succesArrowCount]);
             succesArrowCount++;
         }
         else
