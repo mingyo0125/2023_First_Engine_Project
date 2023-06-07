@@ -62,8 +62,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsReverse: 1
   _playerTrm: {fileID: 0}
-  _range: 5
+  _range: 7
   _alwaysVisible: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &1911920764699149289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 3968191053059025828}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3971744253685372654}
@@ -201,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead29bb6b5843984485e95b08ddad6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiState: {fileID: 0}
+  _aiState: {fileID: 4436223713010330832}
   _playerTrm: {fileID: 0}
 --- !u!195 &2444097476959248817
 NavMeshAgent:
@@ -427,8 +430,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsReverse: 0
   _playerTrm: {fileID: 0}
-  _range: 5
+  _range: 7
   _alwaysVisible: 1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &3968191053636808124
 PrefabInstance:
   m_ObjectHideFlags: 0

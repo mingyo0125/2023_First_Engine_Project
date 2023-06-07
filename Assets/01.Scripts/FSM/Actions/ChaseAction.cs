@@ -17,7 +17,6 @@ public class ChaseAction : AIAction
 
     public override void TakeAction()
     {
-        _renderer.material.color = new Color(1, 0, 0);
         _navmeshAgent.SetDestination(_brain.PlayerTrm.position);
         //나를 빨간색으로 바꾼다, 적을 쫓아가게 한다
         //에이전트 SetDestination 해주는데 목표지점을 AIbrain에 있는 PlayerTrm에서 뽑아서

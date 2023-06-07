@@ -12,6 +12,11 @@ public class AIBrain : MonoBehaviour
 
     public Transform PlayerTrm => _playerTrm;
 
+    private void Awake()
+    {
+        _playerTrm = GameObject.Find("ArrivedPos").transform;
+    }
+
     public void ChangeState(AIState nextstate)
     {
         _aiState = nextstate; //상태전환

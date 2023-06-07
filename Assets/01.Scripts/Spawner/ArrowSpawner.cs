@@ -45,7 +45,7 @@ public class ArrowSpawner : MonoBehaviour
         {
             Arrow arrow = PoolManager.Instance.Pop("Arrow") as Arrow;
 
-            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, 5, 0);
+            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z);
             _arrowList.Add(arrow);
 
             yield return new WaitForSeconds(0.1f);
