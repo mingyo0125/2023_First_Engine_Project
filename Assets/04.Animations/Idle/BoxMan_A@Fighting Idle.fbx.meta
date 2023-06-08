@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70b7ff3cb67b3b14b91e76042ae60217
+guid: fbde9664939619b4a9fb1d28e99c089f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dwarf Idle
+      name: Fighting Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 210
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

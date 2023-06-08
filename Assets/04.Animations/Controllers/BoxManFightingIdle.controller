@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BoxManOrcIdle
+  m_Name: BoxManFightingIdle
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: e2e46dba6e9874c49b3741c040d05dc6, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: fbde9664939619b4a9fb1d28e99c089f, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
