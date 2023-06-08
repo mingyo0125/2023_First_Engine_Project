@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class ArrowSpawner : MonoBehaviour
 {
@@ -26,11 +24,10 @@ public class ArrowSpawner : MonoBehaviour
     private Transform _arrowPosition;
 
     [SerializeField]
-    int roundCount = 0;
+    private int roundCount = 0;
     private bool isCreating;
 
     #region prop
-
     public bool IsCreating => isCreating;
     public int RoundCount => roundCount;
 
@@ -62,21 +59,6 @@ public class ArrowSpawner : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(InitArrow());
-    }
-
-    public void ReSetArrow()
-    {
-        StopAllCoroutines();
-        for (int i = 0; i < _arrowList.Count; i++)
-        {
-            if (_arrowList[i] == null)
-            {
-                continue;
-            }
-            PoolManager.Instance.Push(_arrowList[i]);
-        }
-
-        _arrowList.Clear();
     }
 
 }

@@ -29,8 +29,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            succesArrowCount = 0;
-            FailEvent?.Invoke();
+            GameManager.Instance.GameOver?.Invoke();
         }
     }
 }

@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public UnityEvent GameOver;
     public static GameManager Instance;
 
     [SerializeField]
@@ -43,5 +45,11 @@ public class GameManager : MonoBehaviour
 
         _poolingListSO.List.ForEach(p => PoolManager.Instance.CreatePool(p.prefab, p.poolCount)); //리스트에 있는 모든
     }
+
+    public void GameOverDebug()
+    {
+        Debug.Log("GameOver");
+    }
+
 
 }

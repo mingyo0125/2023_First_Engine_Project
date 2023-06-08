@@ -7,37 +7,47 @@ using UnityEngine.UI;
 
 public class HPManager : MonoBehaviour
 {
-    public UnityEvent GameOver;
-
     [SerializeField]
-    private float _maxHp = 50f;
+    private float _maxHp = 100f;
     [SerializeField]
     private float _currentHp;
-    [SerializeField]
-    private float _minusValue;
-    [SerializeField]
-    private float _roundCnt = 0;
 
     [SerializeField]
     private Image _hpBar;
 
     private void Awake()
     {
-        _currentHp = _maxHp;
+        FillHp();
+        StartCoroutine(HpMinus());
     }
 
     private void Update()
     {
         if( _currentHp <= 0)
         {
-            GameOver?.Invoke();
+            GameManager.Instance.GameOver?.Invoke();
         }
     }
 
-    public void HpMinus()
+    public IEnumerator HpMinus()
     {
-        _currentHp -= _roundCnt * _minusValue;
-        _hpBar.fillAmount = _currentHp / _maxHp;
+        while (true)
+        {
+            if(ArrowSpawner.Instance.IsCreating == false)
+            {
+                Debug.Log("321312");
+                _currentHp -= ArrowSpawner.Instance.RoundCount;
+                _hpBar.fillAmount = _currentHp / _maxHp;
+            }
+            yield return new WaitForSeconds(0.1f);
+            
+        }
     }
+
+    public void FillHp()
+    {
+        _currentHp = _maxHp;
+    }
+
 
 }
