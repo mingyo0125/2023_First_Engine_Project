@@ -6,22 +6,18 @@ using UnityEngine;
 
 public class Enemy : PoolableMono
 {
-    Animator _animator;
-    [SerializeField]
-    List<AnimatorController> _animatorControllerList = new List<AnimatorController>();
-    private readonly int hashAttack = Animator.StringToHash("AttackTrigger");
+    private EnemyAnimator _animator;
     
     public override void Init()
     {
-        _animator = transform.Find("Visual").GetComponent<Animator>();
-        int rand = Random.Range(0, _animatorControllerList.Count);
-        _animator.runtimeAnimatorController = _animatorControllerList[rand];
-        StartCoroutine(PunchAnimation());
+        _animator = transform.Find("Visual").GetComponent <EnemyAnimator>();
+        PunchAnimationStart();
     }
 
-    private IEnumerator PunchAnimation()
+    private void PunchAnimationStart()
     {
-        _animator.SetTrigger(hashAttack);
-        yield return new WaitForSeconds(0.5f);
+        _animator.PunchAnimation();
     }
+
+
 }

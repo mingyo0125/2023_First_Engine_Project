@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class HPManager : MonoBehaviour
 {
+    public static HPManager Instance;
+
     [SerializeField]
     private float _maxHp = 100f;
     [SerializeField]
@@ -17,8 +19,12 @@ public class HPManager : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance != null)
+        {
+            Debug.LogError("에이치피매니저가두개예요");
+        }
+        Instance = this;
         FillHp();
-        StartCoroutine(HpMinus());
     }
 
     private void Update()
@@ -35,7 +41,6 @@ public class HPManager : MonoBehaviour
         {
             if(ArrowSpawner.Instance.IsCreating == false)
             {
-                Debug.Log("321312");
                 _currentHp -= ArrowSpawner.Instance.RoundCount;
                 _hpBar.fillAmount = _currentHp / _maxHp;
             }
@@ -46,7 +51,7 @@ public class HPManager : MonoBehaviour
 
     public void FillHp()
     {
-        _currentHp = _maxHp;
+        _currentHp = _maxHp + 10;
     }
 
 
