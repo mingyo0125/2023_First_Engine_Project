@@ -15,6 +15,7 @@ public class EnemyAnimator : MonoBehaviour
     List<AnimatorController> _animatorControllerList = new List<AnimatorController>();
 
     private readonly int hashAttack = Animator.StringToHash("AttackTrigger");
+    private readonly int hashDie = Animator.StringToHash("IsDie");
 
     private void Awake()
     {
@@ -36,5 +37,20 @@ public class EnemyAnimator : MonoBehaviour
     private void StartIdle()
     {
         StartCoroutine(HPManager.Instance.HpMinus());
+    }
+
+    public void DieAnimation()
+    {
+        _animator.SetBool(hashDie, true);
+    }
+
+    public void DieAnimationEnd()
+    {
+        EnemyPush();
+    }
+
+    private void EnemyPush()
+    {
+        StartCoroutine(EnemySpawner.Instance.EnemyKill());
     }
 }

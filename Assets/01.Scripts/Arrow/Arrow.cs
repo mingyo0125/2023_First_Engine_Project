@@ -19,6 +19,7 @@ public class Arrow : PoolableMono
         if(ArrowSpawner.Instance.RoundCount % 5 == 0)
         {
             StartCoroutine(ChangeArrow());
+            ArrowSpawner.Instance.RoundCount = 0;
         }
     }
 
@@ -49,7 +50,7 @@ public class Arrow : PoolableMono
             randKey = arr[UnityEngine.Random.Range(0, 4)];
             keyCode = keyCode == randKey ? arr[UnityEngine.Random.Range(0, 4)] : randKey;
             SetArrowRotation();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
     }
 }

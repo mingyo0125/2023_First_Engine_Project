@@ -24,18 +24,13 @@ public class ArrowSpawner : MonoBehaviour
     private Transform _arrowPosition;
 
     [SerializeField]
-    private int roundCount = 0;
-    private bool isCreating;
+    public int RoundCount = 0;
+    public bool IsCreating;
 
-    #region prop
-    public bool IsCreating => isCreating;
-    public int RoundCount => roundCount;
-
-    #endregion
     
     private IEnumerator InitArrow()
     {
-        isCreating = true;
+        IsCreating = true;
         _arrowList.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
@@ -45,17 +40,17 @@ public class ArrowSpawner : MonoBehaviour
             arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z);
             _arrowList.Add(arrow);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.6f);
         }
 
-        isCreating = false;
+        IsCreating = false;
     }
 
 
     public void Succes()
     {
         //text.SetText(_rouCount.ToString());
-        roundCount++;
+        RoundCount++;
 
         StopAllCoroutines();
         StartCoroutine(InitArrow());
