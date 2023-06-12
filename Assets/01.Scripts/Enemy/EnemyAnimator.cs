@@ -46,11 +46,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void DieAnimationEnd()
     {
-        EnemyPush();
+        EnemySpawner.Instance.EnemyKill();
     }
 
-    private void EnemyPush()
-    {
-        StartCoroutine(EnemySpawner.Instance.EnemyKill());
-    }
 }

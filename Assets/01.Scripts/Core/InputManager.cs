@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
             succesArrowCount = 0;
             EnemyDieEvent?.Invoke();
             SuccesEvent?.Invoke();
+            EnemySpawner.Instance.EnemySpawnEvent?.Invoke();
         }
     }
 
