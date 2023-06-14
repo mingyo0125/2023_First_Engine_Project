@@ -44,7 +44,6 @@ public class EnemyAnimator : MonoBehaviour
 
     public void DieAnimationEnd()
     {
-        Debug.Log("42");
         EnemySpawner.Instance.CanSpawn = true;
         EnemySpawner.Instance.EnemyKill();
     }

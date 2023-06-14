@@ -7,17 +7,8 @@ public class ArrowSpawner : MonoBehaviour
 {
     public static ArrowSpawner Instance;
 
-    private void Awake()
-    {
-        if(Instance != null)
-        {
-            Debug.LogError("ArrowSpawner가 두개지요");
-        }
-        Instance = this;
-    }
-
     [SerializeField]
-    private int _arrowNum = 5;
+    public int _arrowNum = 5;
 
     public List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
@@ -27,11 +18,25 @@ public class ArrowSpawner : MonoBehaviour
     public int RoundCount = 0;
     public bool IsCreating;
 
-    
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("ArrowSpawner가 두개지요");
+        }
+        Instance = this;
+        
+    }
+
+    private void Start()
+    {
+        StartCoroutine(InitArrow());
+    }
+
     private IEnumerator InitArrow()
     {
         IsCreating = true;
-        _arrowList.Clear();
+        if (_arrowList != null) { _arrowList.Clear(); }
 
         for (int i = 0; i < _arrowNum; i++)
         {
