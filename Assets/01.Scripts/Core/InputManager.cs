@@ -1,55 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
     public UnityEvent FailEvent;
-    public UnityEvent SuccesEvent;
-    //public Action EnemyDieAction;
+    public UnityEvent SuccessEvent;
 
-    Enemy curEnemy;
-
-    [SerializeField]
-    private int succesArrowCount = 0;
-
+    private int successArrowCount = 0;
 
     private void Update()
     {
-        if (succesArrowCount == ArrowSpawner.Instance._arrowList.Count && !ArrowSpawner.Instance.IsCreating)
+        if (successArrowCount == ArrowSpawner.Instance._arrowList.Count && !ArrowSpawner.Instance.IsCreating)
         {
-            if (curEnemy != null) { curEnemy.DieAnimationStart(); }
-            Debug.Log(EnemySpawner.Instance.CanSpawn);
-
             if (EnemySpawner.Instance.CanSpawn)
             {
-                succesArrowCount = 0;
+                successArrowCount = 0;
                 EnemySpawner.Instance.EnemySpawnEvent?.Invoke();
-                SuccesEvent?.Invoke();
+                SuccessEvent?.Invoke();
             }
         }
     }
 
     public void ClickButton(string keyCode)
     {
-        if (ArrowSpawner.Instance.IsCreating) { return; }
-        if (keyCode == ArrowSpawner.Instance._arrowList[succesArrowCount].keyCode.ToString())
+        if (ArrowSpawner.Instance.IsCreating)
+            return;
+
+        if (keyCode == ArrowSpawner.Instance._arrowList[successArrowCount].keyCode.ToString())
         {
-            PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[succesArrowCount]);
-            succesArrowCount++;
+            PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[successArrowCount]);
+            successArrowCount++;
         }
         else
         {
             GameManager.Instance.GameOver?.Invoke();
         }
     }
-
-    public void FindEnemy()
-    {
-        //if(EnemyDieAction != null) { EnemyDieAction -= curEnemy.DieAnimationStart; }
-        curEnemy = FindAnyObjectByType<Enemy>();
-        //EnemyDieAction += curEnemy.DieAnimationStart;
-    }
 }
+

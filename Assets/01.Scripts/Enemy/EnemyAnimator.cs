@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -10,10 +8,13 @@ public class EnemyAnimator : MonoBehaviour
     public Animator Animator => _animator;
 
     [SerializeField]
-    List<AnimatorController> _animatorControllerList = new List<AnimatorController>();
+    private List<AnimatorController> _animatorControllerList = new List<AnimatorController>();
 
     private readonly int hashAttack = Animator.StringToHash("AttackTrigger");
     private readonly int hashDie = Animator.StringToHash("IsDie");
+
+    private bool isAnimatingDie = false;
+    public bool IsAnimatingDie => isAnimatingDie;
 
     private void Awake()
     {
@@ -22,31 +23,20 @@ public class EnemyAnimator : MonoBehaviour
         _animator.runtimeAnimatorController = _animatorControllerList[rand];
     }
 
-    public void PunchAnimation()
+    public void PlayPunchAnimation()
     {
         _animator.SetTrigger(hashAttack);
     }
 
-    public void AnimationEnd()
+    public void PlayDieAnimation()
     {
-        StartIdle();
-    }
-
-    private void StartIdle()
-    {
-        StartCoroutine(HPManager.Instance.HpMinus());
-    }
-
-    public void DieAnimation()
-    {
+        isAnimatingDie = true;
         _animator.SetBool(hashDie, true);
     }
 
-    public void DieAnimationEnd()
+    public void OnDieAnimationComplete()
     {
-        Debug.Log("42");
-        EnemySpawner.Instance.CanSpawn = true;
-        EnemySpawner.Instance.EnemyKill();
+        // Notify the enemy spawner that the die animation is complete
+        EnemySpawner.Instance.OnEnemyDieAnimationComplete();
     }
-
 }

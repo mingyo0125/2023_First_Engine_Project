@@ -1,29 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEngine;
-
 public class Enemy : PoolableMono
 {
     private EnemyAnimator _animator;
-    
+
     public override void Init()
     {
         _animator = transform.Find("Visual").GetComponent<EnemyAnimator>();
-        PunchAnimationStart();
+        PlayPunchAnimation();
     }
 
-    private void PunchAnimationStart()
+    private void PlayPunchAnimation()
     {
-        _animator.PunchAnimation();
+        _animator.PlayPunchAnimation();
     }
 
-    public void DieAnimationStart()
+    public void PlayDieAnimation()
     {
-        EnemySpawner.Instance.CanSpawn = false;
-        _animator.DieAnimation();
+        _animator.PlayDieAnimation();
     }
-
-
 }
