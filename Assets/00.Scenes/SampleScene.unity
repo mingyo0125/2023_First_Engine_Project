@@ -1392,6 +1392,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isDying: 0
   enemiesTrm: {x: 0.5, y: 1, z: -4.37}
 --- !u!1 &954188751
 GameObject:

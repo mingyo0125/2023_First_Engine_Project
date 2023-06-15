@@ -16,7 +16,7 @@ public class Arrow : PoolableMono
 
         SetArrowRotation();
 
-        if(ArrowSpawner.Instance.RoundCount % 5 == 0)
+        if(ArrowSpawner.Instance.RoundCount % 5 == 0) //º¸½º
         {
             StartCoroutine(ChangeArrow());
             ArrowSpawner.Instance.RoundCount = 0;

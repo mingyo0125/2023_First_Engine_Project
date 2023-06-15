@@ -36,8 +36,8 @@ ModelImporter:
       name: Hit Reaction
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 0
-      lastFrame: 69
+      firstFrame: 10
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.45518246
+      - time: 1
         functionName: DieAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

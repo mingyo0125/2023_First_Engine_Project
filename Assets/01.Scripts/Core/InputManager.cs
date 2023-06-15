@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public UnityEvent FailEvent;
     public UnityEvent SuccesEvent;
-    public Action EnemyDieEvent;
+    //public Action EnemyDieAction;
 
     Enemy curEnemy;
 
@@ -20,10 +20,15 @@ public class InputManager : MonoBehaviour
     {
         if (succesArrowCount == ArrowSpawner.Instance._arrowList.Count && !ArrowSpawner.Instance.IsCreating)
         {
-            succesArrowCount = 0;
-            EnemyDieEvent?.Invoke();
-            SuccesEvent?.Invoke();
-            EnemySpawner.Instance.EnemySpawnEvent?.Invoke();
+            if (curEnemy != null) { curEnemy.DieAnimationStart(); }
+            Debug.Log(EnemySpawner.Instance.CanSpawn);
+
+            if (EnemySpawner.Instance.CanSpawn)
+            {
+                succesArrowCount = 0;
+                EnemySpawner.Instance.EnemySpawnEvent?.Invoke();
+                SuccesEvent?.Invoke();
+            }
         }
     }
 
@@ -43,8 +48,8 @@ public class InputManager : MonoBehaviour
 
     public void FindEnemy()
     {
-        if(EnemyDieEvent != null) { EnemyDieEvent -= curEnemy.DieAnimationStart; }
+        //if(EnemyDieAction != null) { EnemyDieAction -= curEnemy.DieAnimationStart; }
         curEnemy = FindAnyObjectByType<Enemy>();
-        EnemyDieEvent += curEnemy.DieAnimationStart;
+        //EnemyDieAction += curEnemy.DieAnimationStart;
     }
 }

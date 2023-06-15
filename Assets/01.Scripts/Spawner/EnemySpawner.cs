@@ -8,14 +8,16 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner Instance;
     public UnityEvent EnemySpawnEvent;
 
+    public bool CanSpawn;
 
     private void Awake()
     {
         if(Instance != null)
         {
-            Debug.LogError("에네미스포너가두개인데용");
+            Debug.LogError("에네미스포너가두개인데용고다민의삼각김밥냠냠");
         }
         Instance = this;
+        CanSpawn = true;
     }
 
     [SerializeField]
@@ -27,11 +29,14 @@ public class EnemySpawner : MonoBehaviour
     {
         enemy = PoolManager.Instance.Pop("Enemy") as Enemy;
         enemy.transform.position = enemiesTrm;
-    }    
+    }
 
     public void EnemyKill()
     {
-        if (enemy != null) { PoolManager.Instance.Push(enemy); }
-        
+        Debug.Log("Kill");
+        if (enemy != null)
+        {
+            PoolManager.Instance.Push(enemy);
+        }
     }
 }

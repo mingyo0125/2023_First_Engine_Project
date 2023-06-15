@@ -10,7 +10,7 @@ public class Enemy : PoolableMono
     
     public override void Init()
     {
-        _animator = transform.Find("Visual").GetComponent <EnemyAnimator>();
+        _animator = transform.Find("Visual").GetComponent<EnemyAnimator>();
         PunchAnimationStart();
     }
 
@@ -21,6 +21,7 @@ public class Enemy : PoolableMono
 
     public void DieAnimationStart()
     {
+        EnemySpawner.Instance.CanSpawn = false;
         _animator.DieAnimation();
     }
 
