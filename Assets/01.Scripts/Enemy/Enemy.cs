@@ -1,29 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEngine;
-
 public class Enemy : PoolableMono
 {
     private EnemyAnimator _animator;
-    
+
     public override void Init()
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
         _animator = transform.Find("Visual").GetComponent<EnemyAnimator>();
+        PlayPunchAnimation();
+=======
+=======
+>>>>>>> parent of 717cd9e (바꾸기전)
+        _animator = transform.Find("Visual").GetComponent <EnemyAnimator>();
         PunchAnimationStart();
+>>>>>>> parent of 717cd9e (바꾸기전)
     }
 
-    private void PunchAnimationStart()
+    private void PlayPunchAnimation()
     {
-        _animator.PunchAnimation();
+        _animator.PlayPunchAnimation();
     }
 
-    public void DieAnimationStart()
+    public void PlayDieAnimation()
     {
-        EnemySpawner.Instance.CanSpawn = false;
+<<<<<<< HEAD
+<<<<<<< HEAD
+        _animator.PlayDieAnimation();
+=======
+=======
+>>>>>>> parent of 717cd9e (바꾸기전)
         _animator.DieAnimation();
+>>>>>>> parent of 717cd9e (바꾸기전)
     }
-
-
 }
