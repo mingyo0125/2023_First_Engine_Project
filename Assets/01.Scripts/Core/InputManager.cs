@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
         if (successArrowCount == ArrowSpawner.Instance._arrowList.Count && !ArrowSpawner.Instance.IsCreating)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (EnemySpawner.Instance.CanSpawn)
             {
                 successArrowCount = 0;
@@ -30,10 +31,15 @@ public class InputManager : MonoBehaviour
                 SuccessEvent?.Invoke();
             }
 =======
+=======
+>>>>>>> parent of 717cd9e (바꾸기전)
             succesArrowCount = 0;
             EnemyDieEvent?.Invoke();
             SuccesEvent?.Invoke();
             EnemySpawner.Instance.EnemySpawnEvent?.Invoke();
+<<<<<<< HEAD
+>>>>>>> parent of 717cd9e (바꾸기전)
+=======
 >>>>>>> parent of 717cd9e (바꾸기전)
         }
     }

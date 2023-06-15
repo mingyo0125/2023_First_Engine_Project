@@ -39,9 +39,12 @@ public class EnemyAnimator : MonoBehaviour
     public void OnDieAnimationComplete()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Notify the enemy spawner that the die animation is complete
         EnemySpawner.Instance.OnEnemyDieAnimationComplete();
 =======
+=======
+>>>>>>> parent of 717cd9e (바꾸기전)
         EnemySpawner.Instance.EnemyKill();
 >>>>>>> parent of 717cd9e (바꾸기전)
     }
