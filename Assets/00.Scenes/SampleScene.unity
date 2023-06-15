@@ -1355,7 +1355,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< HEAD
   enemiesTransform: {fileID: 648744658}
+=======
+      - m_Target: {fileID: 69067849}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: FindEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  enemiesTrm: {x: 0.5, y: 1, z: -4.37}
+>>>>>>> parent of 717cd9e (바꾸기전)
 --- !u!1 &954188751
 GameObject:
   m_ObjectHideFlags: 0

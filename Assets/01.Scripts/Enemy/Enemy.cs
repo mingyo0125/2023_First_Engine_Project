@@ -4,8 +4,13 @@ public class Enemy : PoolableMono
 
     public override void Init()
     {
+<<<<<<< HEAD
         _animator = transform.Find("Visual").GetComponent<EnemyAnimator>();
         PlayPunchAnimation();
+=======
+        _animator = transform.Find("Visual").GetComponent <EnemyAnimator>();
+        PunchAnimationStart();
+>>>>>>> parent of 717cd9e (바꾸기전)
     }
 
     private void PlayPunchAnimation()
@@ -15,6 +20,10 @@ public class Enemy : PoolableMono
 
     public void PlayDieAnimation()
     {
+<<<<<<< HEAD
         _animator.PlayDieAnimation();
+=======
+        _animator.DieAnimation();
+>>>>>>> parent of 717cd9e (바꾸기전)
     }
 }

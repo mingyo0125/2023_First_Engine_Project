@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
+    public event Action OnAnimationEndTrigger = null;
+    
     private Animator _animator;
     public Animator Animator => _animator;
 
@@ -36,7 +38,11 @@ public class EnemyAnimator : MonoBehaviour
 
     public void OnDieAnimationComplete()
     {
+<<<<<<< HEAD
         // Notify the enemy spawner that the die animation is complete
         EnemySpawner.Instance.OnEnemyDieAnimationComplete();
+=======
+        EnemySpawner.Instance.EnemyKill();
+>>>>>>> parent of 717cd9e (바꾸기전)
     }
 }
