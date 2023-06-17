@@ -30,7 +30,6 @@ public class Enemy : PoolableMono
         {
             yield return new WaitForSeconds(3.5f);
             isStop = false;
-            transform.position = new Vector3(transform.position.x + 0.01f, transform.position.y, transform.position.z);
         }
         else
         {

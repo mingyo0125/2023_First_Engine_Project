@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7348379}
   m_Layer: 0
-  m_Name: MIddlePoint
+  m_Name: MiddlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2244,6 +2244,8 @@ MonoBehaviour:
         m_CallState: 2
   _poolingListSO: {fileID: 11400000, guid: 5200510296822254e84a7dc068644975, type: 2}
   _canvasScaler: {fileID: 1631460554}
+  MiddleTrm: {fileID: 0}
+  EndTrm: {fileID: 0}
 --- !u!4 &1736762139
 Transform:
   m_ObjectHideFlags: 0
