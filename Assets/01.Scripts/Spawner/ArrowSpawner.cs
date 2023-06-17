@@ -30,7 +30,7 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartInitArrow();
+        Succes();
     }
 
     private IEnumerator InitArrow()
@@ -45,24 +45,28 @@ public class ArrowSpawner : MonoBehaviour
             arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z);
             _arrowList.Add(arrow);
 
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
         }
 
         IsCreating = false;
+        if (RoundCount == 5)
+        {
+            RoundCount = 1;
+        }
     }
 
-    public void StartInitArrow()
-    {
-        StartCoroutine(InitArrow());
-    }
 
     public void Succes()
     {
         //text.SetText(_rouCount.ToString());
+        
+
         RoundCount++;
 
         StopAllCoroutines();
         StartCoroutine(InitArrow());
+
+        
     }
 
 }

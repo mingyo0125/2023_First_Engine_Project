@@ -14,28 +14,31 @@ public class Enemy : PoolableMono
 
     public override void Init()
     {
+        isStop = false;
         _middleStop = GameManager.Instance.MiddleTrm.position;
-        _endPos = GameManager.Instance.EndTrm.position;
-        _endPos = new Vector3(-4.5f, 5, 0);
     }
 
     private void FixedUpdate()
     {
-        StartCoroutine(Fly());
     }
 
-    private IEnumerator Fly()
+    private void Update()
+    {
+        if (Mathf.Approximately(transform.position.x, _middleStop.x) || transform.position.x < _middleStop.x) { isStop = true; }
+        Fly();
+    }
+
+    private void Fly()
     {
         if (isStop)
         {
-            yield return new WaitForSeconds(3.5f);
-            isStop = false;
+            speed = 0;
         }
         else
         {
-            transform.Translate(Vector3.forward.normalized * speed * Time.deltaTime);
+            speed = 3f;
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
         }
 
-        if (transform.position.x <= _middleStop.x) { isStop = true; }
     }
 }

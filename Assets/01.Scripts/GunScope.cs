@@ -9,7 +9,7 @@ public class GunScope : MonoBehaviour
     Animator _animator;
 
     [SerializeField]
-    Image _scopeImage;
+    GameObject _scopeImage;
 
     private readonly int hashScope = Animator.StringToHash("IsScope");
     private readonly int hashEnd = Animator.StringToHash("IsEnd");
@@ -18,9 +18,9 @@ public class GunScope : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         gun = GetComponent<MeshRenderer>();
-    }
 
-    
+        ScopeOn();
+    }
 
     public void ScopeOff()
     {

@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     CanvasScaler _canvasScaler;
 
     public Transform MiddleTrm;
-    public Transform EndTrm;
 
     private void Awake()
     {
@@ -28,7 +27,6 @@ public class GameManager : MonoBehaviour
         Setresolution();
 
         MiddleTrm = GameObject.Find("MiddlePoint").transform;
-        EndTrm = GameObject.Find("EndPoint").transform;
     }
 
     private void Setresolution()

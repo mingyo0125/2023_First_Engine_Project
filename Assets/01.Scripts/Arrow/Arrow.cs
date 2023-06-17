@@ -8,10 +8,13 @@ public class Arrow : PoolableMono
 {
     public KeyCode keyCode;
 
+    SpriteRenderer _spriteRenderer;
+
     private KeyCode[] arr = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.UpArrow};
 
     public override void Init()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         keyCode = arr[UnityEngine.Random.Range(0, 4)];
 
         SetArrowRotation();
@@ -19,7 +22,10 @@ public class Arrow : PoolableMono
         if(ArrowSpawner.Instance.RoundCount == 5) //º¸½º
         {
             StartCoroutine(ChangeArrow());
-            ArrowSpawner.Instance.RoundCount = 0;
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
         }
     }
 
@@ -45,12 +51,16 @@ public class Arrow : PoolableMono
     private IEnumerator ChangeArrow()
     {
         KeyCode randKey;
-        while(true)
+
+        _spriteRenderer.color = Color.red;
+
+        while (true)
         {
             randKey = arr[UnityEngine.Random.Range(0, 4)];
             keyCode = keyCode == randKey ? arr[UnityEngine.Random.Range(0, 4)] : randKey;
             SetArrowRotation();
             yield return new WaitForSeconds(2f);
         }
+
     }
 }

@@ -35,6 +35,11 @@ public class HPManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(HpMinus());
+    }
+
     public IEnumerator HpMinus()
     {
         while (true)
@@ -51,7 +56,7 @@ public class HPManager : MonoBehaviour
 
     public void FillHp()
     {
-        _currentHp = _maxHp;
+        _currentHp = _maxHp + 10;
     }
 
 
