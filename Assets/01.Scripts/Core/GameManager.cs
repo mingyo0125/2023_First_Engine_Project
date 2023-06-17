@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     CanvasScaler _canvasScaler;
 
+    public Transform MiddleTrm;
+    public Transform EndTrm;
+
     private void Awake()
     {
         if (Instance != null)
@@ -23,6 +26,9 @@ public class GameManager : MonoBehaviour
         Instance = this;
         MakePool();
         Setresolution();
+
+        MiddleTrm = GameObject.Find("MiddlePoint").transform;
+        EndTrm = GameObject.Find("EndPoint").transform;
     }
 
     private void Setresolution()

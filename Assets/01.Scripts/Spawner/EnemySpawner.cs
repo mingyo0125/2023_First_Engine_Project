@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
 
     public Enemy CurEnemy;
 
+    [SerializeField]
+    EnemyListSO _enemyListSO;
+
     private void Awake()
     {
         if(Instance != null)
@@ -33,8 +36,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemySpawn()
     {
-        CurEnemy = PoolManager.Instance.Pop("Enemy") as Enemy;
+        int rand = Random.Range(0, _enemyListSO.List.Count);
+
+        CurEnemy = PoolManager.Instance.Pop(_enemyListSO.List[rand].prefab.name) as Enemy;
         CurEnemy.transform.position = enemiesTrm;
+
     }
 
     public void EnemyKill()
