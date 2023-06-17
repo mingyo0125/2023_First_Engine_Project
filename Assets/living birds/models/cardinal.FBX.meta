@@ -390,12 +390,17 @@ ModelImporter:
   - first:
       137: 13700000
     second: cardinal
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cardinal
+    second: {fileID: 2100000, guid: d1b87827ab4dd684d83e0aa78759e0bd, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

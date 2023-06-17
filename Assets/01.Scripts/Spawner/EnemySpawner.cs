@@ -10,11 +10,13 @@ public class EnemySpawner : MonoBehaviour
 
     public bool CanSpawn = false;
 
+    public Enemy CurEnemy;
+
     private void Awake()
     {
         if(Instance != null)
         {
-            Debug.LogError("¿¡³×¹Ì½ºÆ÷³Ê°¡µÎ°³ÀÎµ¥¿ë°í´Ù¹ÎÀÇ»ï°¢±è¹ä³È³È");
+            Debug.LogError("¿¡³×¹Ì½ºÆ÷³Ê°¡µÎ°³°í´Ù¹ÎÀÇ»ï°¢±è¹ä³È³È");
         }
         Instance = this;
     }
@@ -31,14 +33,14 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemySpawn()
     {
-        //CurEnemy = PoolManager.Instance.Pop("Enemy") as Enemy;
-        //CurEnemy.transform.position = enemiesTrm;
+        CurEnemy = PoolManager.Instance.Pop("Enemy") as Enemy;
+        CurEnemy.transform.position = enemiesTrm;
     }
 
     public void EnemyKill()
     {
         Debug.Log("Kill");
-        //PoolManager.Instance.Push(CurEnemy);
-        //EnemySpawnEvent?.Invoke();
+        PoolManager.Instance.Push(CurEnemy);
+        EnemySpawnEvent?.Invoke();
     }
 }

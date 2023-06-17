@@ -402,12 +402,17 @@ ModelImporter:
   - first:
       137: 13700002
     second: bluejay
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueJay
+    second: {fileID: 2100000, guid: 64aab1f1d39bf2e43befcc5c0573a729, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
