@@ -51,7 +51,7 @@ public class HPManager : MonoBehaviour
 
     public void FillHp()
     {
-        _currentHp = _maxHp + 10;
+        _currentHp = _maxHp;
     }
 
 

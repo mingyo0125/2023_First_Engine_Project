@@ -7,21 +7,20 @@ using UnityEngine.Events;
 public class InputManager : MonoBehaviour
 {
     public UnityEvent FailEvent;
-    public UnityEvent SuccesEvent;
+    public UnityEvent SuccessEvent;
     //public Action EnemyDieAction;
 
     [SerializeField]
     private int succesArrowCount = 0;
 
-
     private void Update()
     {
         if (succesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
         {
-            EnemySpawner.Instance.CurEnemy.DieAnimationStart();
+            //EnemySpawner.Instance.CurEnemy.DieAnimationStart();
 
             succesArrowCount = 0;
-            SuccesEvent?.Invoke();
+            SuccessEvent?.Invoke();
         }
     }
 
@@ -39,9 +38,4 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void FindEnemy()
-    {
-        //if(EnemyDieAction != null) { EnemyDieAction -= curEnemy.DieAnimationStart; }
-        //EnemyDieAction += curEnemy.DieAnimationStart;
-    }
 }

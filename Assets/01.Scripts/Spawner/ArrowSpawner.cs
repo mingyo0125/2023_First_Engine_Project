@@ -15,7 +15,7 @@ public class ArrowSpawner : MonoBehaviour
     private Transform _arrowPosition;
 
     [SerializeField]
-    public int RoundCount = 0;
+    public int RoundCount = 1;
     public bool IsCreating;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(InitArrow());
+        StartInitArrow();
     }
 
     private IEnumerator InitArrow()
@@ -51,6 +51,10 @@ public class ArrowSpawner : MonoBehaviour
         IsCreating = false;
     }
 
+    public void StartInitArrow()
+    {
+        StartCoroutine(InitArrow());
+    }
 
     public void Succes()
     {

@@ -28,16 +28,16 @@ public class Arrow : PoolableMono
         switch (keyCode)
         {
             case KeyCode.LeftArrow:
-                transform.rotation = Quaternion.Euler(0f, 0f, 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, 180);
                 break;
             case KeyCode.RightArrow:
-                transform.rotation = Quaternion.Euler(0f, 0f, -90);
-                break;
-            case KeyCode.UpArrow:
                 transform.rotation = Quaternion.identity;
                 break;
+            case KeyCode.UpArrow:
+                transform.rotation = Quaternion.Euler(0f, 0f, 90);
+                break;
             case KeyCode.DownArrow:
-                transform.rotation = Quaternion.Euler(0f, 0f, 180);
+                transform.rotation = Quaternion.Euler(0f, 0f, -90);
                 break;
         }
     }
