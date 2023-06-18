@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class GunScope : MonoBehaviour
 {
-    MeshRenderer gun;
     Animator _animator;
-
-    [SerializeField]
-    GameObject _scopeImage;
 
     private readonly int hashScope = Animator.StringToHash("IsScope");
     private readonly int hashEnd = Animator.StringToHash("IsEnd");
@@ -17,15 +13,12 @@ public class GunScope : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        gun = GetComponent<MeshRenderer>();
 
         ScopeOn();
     }
 
     public void ScopeOff()
     {
-        _scopeImage.gameObject.SetActive(false);
-        gun.enabled = true;
         _animator.SetBool(hashScope, false);
     }
 
@@ -37,8 +30,6 @@ public class GunScope : MonoBehaviour
 
     public void ScopeOnAniEnd()
     {
-        gun.enabled = false;
-        _scopeImage.gameObject.SetActive(true);
     }
 
     public void ScopeOffAniEnd()
