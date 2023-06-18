@@ -7,14 +7,12 @@ public class ArrowSpawner : MonoBehaviour
 {
     public static ArrowSpawner Instance;
 
-    [SerializeField]
     public int _arrowNum = 5;
 
     public List<Arrow> _arrowList = new List<Arrow>();
     [SerializeField]
     private Transform _arrowPosition;
 
-    [SerializeField]
     public int RoundCount = 1;
     public bool IsCreating;
 
@@ -36,13 +34,13 @@ public class ArrowSpawner : MonoBehaviour
     private IEnumerator InitArrow()
     {
         IsCreating = true;
-        if (_arrowList != null) { _arrowList.Clear(); }
+        _arrowList?.Clear();
 
         for (int i = 0; i < _arrowNum; i++)
         {
             Arrow arrow = PoolManager.Instance.Pop("Arrow") as Arrow;
 
-            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 1.3f * i, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z);
+            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x + 2.5f * i, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z);
             _arrowList.Add(arrow);
 
             yield return new WaitForSeconds(0.3f);
@@ -58,15 +56,10 @@ public class ArrowSpawner : MonoBehaviour
 
     public void Succes()
     {
-        //text.SetText(_rouCount.ToString());
-        
-
         RoundCount++;
 
         StopAllCoroutines();
         StartCoroutine(InitArrow());
-
-        
     }
 
 }

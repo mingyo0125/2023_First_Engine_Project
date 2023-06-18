@@ -10,7 +10,7 @@ public class Arrow : PoolableMono
 
     SpriteRenderer _spriteRenderer;
 
-    private KeyCode[] arr = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.UpArrow};
+    private readonly KeyCode[] arr = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.UpArrow};
 
     public override void Init()
     {
