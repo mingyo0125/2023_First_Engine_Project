@@ -17,7 +17,6 @@ public class InputManager : MonoBehaviour
     {
         if (succesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
         {
-
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
             SuccessEvent?.Invoke();
