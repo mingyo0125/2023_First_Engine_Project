@@ -24,6 +24,7 @@ public class Enemy : PoolableMono
     {
         _rigidbody.velocity = new Vector3(transform.position.x, transform.position.y * - 5f, transform.position.z);
         yield return new WaitForSeconds(1f);
+        _rigidbody.velocity = Vector3.zero;
         EnemySpawner.Instance.EnemyKill();
     }
 }

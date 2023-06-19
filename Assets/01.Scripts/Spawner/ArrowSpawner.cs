@@ -43,7 +43,7 @@ public class ArrowSpawner : MonoBehaviour
             arrow.transform.position = new Vector3(_arrowPosition.transform.position.x, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z * 2.5f * i);
             _arrowList.Add(arrow);
 
-            yield return null;
+            yield return new WaitForSeconds(0.3f);
         }
 
         IsCreating = false;
