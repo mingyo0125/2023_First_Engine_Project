@@ -24,9 +24,6 @@ public class EnemySpawner : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField]
-    private Vector3 enemiesTrm;
-
     private void Start()
     {
         EnemySpawnEvent?.Invoke();
@@ -37,8 +34,7 @@ public class EnemySpawner : MonoBehaviour
         int rand = Random.Range(0, _enemyListSO.List.Count);
 
         CurEnemy = PoolManager.Instance.Pop(_enemyListSO.List[rand].prefab.name) as Enemy;
-        CurEnemy.transform.position = enemiesTrm;
-
+        CurEnemy.transform.localPosition = new Vector3(0.1f, -0.25f, 3.7f);
     }
 
     public void EnemyKill()

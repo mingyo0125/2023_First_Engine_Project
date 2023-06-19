@@ -19,25 +19,8 @@ public class Enemy : PoolableMono
         _middleStop = GameManager.Instance.MiddleTrm.position;
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-    }
 
-    private void Update()
-    {
-        if (Mathf.Approximately(transform.position.x, _middleStop.x) || transform.position.x < _middleStop.x) { isStop = true; }
-        Fly();
-    }
-
-    private void Fly()
-    {
-        if (isStop)
-        {
-            speed = 0;
-        }
-        else
-        {
-            speed = 3f;
-            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
-        }
+        transform.SetParent(GameObject.Find("Main Camera").transform, false);
 
     }
 
