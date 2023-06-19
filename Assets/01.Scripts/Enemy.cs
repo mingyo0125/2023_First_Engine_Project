@@ -6,22 +6,13 @@ using UnityEngine;
 
 public class Enemy : PoolableMono
 {
-    private float speed = 3f;
-    private bool isStop = false;
-    Vector3 _middleStop;
-
-    Animator _animator;
     Rigidbody _rigidbody;
 
     public override void Init()
     {
-        isStop = false;
-        _middleStop = GameManager.Instance.MiddleTrm.position;
         _rigidbody = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
 
         transform.SetParent(GameObject.Find("Main Camera").transform, false);
-
     }
 
     public void Die()

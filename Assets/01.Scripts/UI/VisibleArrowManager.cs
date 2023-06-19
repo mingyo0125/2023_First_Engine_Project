@@ -5,10 +5,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VisibleArrow : MonoBehaviour
+public class VisibleArrowManager : MonoBehaviour
 {
-    [SerializeField]
-    List<Image> visibleArrowList = new List<Image>();
+    public static VisibleArrowManager Instance;
+
+    public List<Image> VisibleArrowList = new List<Image>();
+    
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Debug.LogError("VisibleArrowManager2°³");
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -21,10 +31,10 @@ public class VisibleArrow : MonoBehaviour
     }
 
     private IEnumerator VisibleArrowCoroutine()
-    { 
-        for (int i = 0; i < visibleArrowList.Count; i++)
+    {
+        for (int i = 0; i < VisibleArrowList.Count; i++)
         {
-            visibleArrowList[i].enabled = true;
+            VisibleArrowList[i].enabled = true;
 
             KeyCode keyCode = ArrowSpawner.Instance._arrowList[i].keyCode;
 
@@ -46,9 +56,9 @@ public class VisibleArrow : MonoBehaviour
                     break;
             }
 
-            Vector3 rotateVec = visibleArrowList[i].rectTransform.eulerAngles;
+            Vector3 rotateVec = VisibleArrowList[i].rectTransform.eulerAngles;
             rotateVec.z = value;
-            visibleArrowList[i].rectTransform.eulerAngles = rotateVec;
+            VisibleArrowList[i].rectTransform.eulerAngles = rotateVec;
 
             yield return new WaitForSeconds(0.3f);
         }

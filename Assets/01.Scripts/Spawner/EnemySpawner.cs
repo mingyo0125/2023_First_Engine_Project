@@ -42,5 +42,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Kill");
         PoolManager.Instance.Push(CurEnemy);
         EnemySpawnEvent?.Invoke();
+        VisibleArrowManager.Instance.VisibleArrowInit();
+
     }
 }
