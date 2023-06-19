@@ -10,16 +10,15 @@ public class Enemy : PoolableMono
     private bool isStop = false;
     Vector3 _middleStop;
 
-    Vector3 _endPos;
+    Animator _animator;
+    Rigidbody _rigidbody;
 
     public override void Init()
     {
         isStop = false;
         _middleStop = GameManager.Instance.MiddleTrm.position;
-    }
-
-    private void FixedUpdate()
-    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,5 +39,17 @@ public class Enemy : PoolableMono
             transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
         }
 
+    }
+
+    public void Die()
+    {
+        StartCoroutine(EnemyDieCorou());
+    }
+
+    private IEnumerator EnemyDieCorou()
+    {
+        _rigidbody.velocity = new Vector3(transform.position.x, transform.position.y * - 5f, transform.position.z);
+        yield return new WaitForSeconds(1f);
+        EnemySpawner.Instance.EnemyKill();
     }
 }
