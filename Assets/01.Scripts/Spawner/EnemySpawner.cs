@@ -27,8 +27,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Vector3 enemiesTrm;
 
-    //public Enemy CurEnemy;
-
     private void Start()
     {
         EnemySpawnEvent?.Invoke();
