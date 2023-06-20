@@ -9,8 +9,8 @@ public class VisibleArrowManager : MonoBehaviour
 {
     public static VisibleArrowManager Instance;
 
-    public List<Image> VisibleArrowList = new List<Image>();
-    
+    public List<VisiableArrow> VisibleArrowList = new List<VisiableArrow>();
+
     private void Awake()
     {
         if(Instance != null)
@@ -34,33 +34,15 @@ public class VisibleArrowManager : MonoBehaviour
     {
         for (int i = 0; i < VisibleArrowList.Count; i++)
         {
-            VisibleArrowList[i].enabled = true;
+            VisibleArrowList[i].gameObject.SetActive(true);
 
-            KeyCode keyCode = ArrowSpawner.Instance._arrowList[i].keyCode;
-
-            float value = 0;
-
-            switch (keyCode)
+            if (ArrowSpawner.Instance.RoundCount == 5)
             {
-                case KeyCode.LeftArrow:
-                    value = 180;
-                    break;
-                case KeyCode.RightArrow:
-                    value = 0;
-                    break;
-                case KeyCode.UpArrow:
-                    value = 90;
-                    break;
-                case KeyCode.DownArrow:
-                    value = -90;
-                    break;
-            }
-
-            Vector3 rotateVec = VisibleArrowList[i].rectTransform.eulerAngles;
-            rotateVec.z = value;
-            VisibleArrowList[i].rectTransform.eulerAngles = rotateVec;
+                if (i == 5) { ArrowSpawner.Instance.RoundCount = 1; }
+            } 
 
             yield return new WaitForSeconds(0.3f);
         }
+
     }
 }

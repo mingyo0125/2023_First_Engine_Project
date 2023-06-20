@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 472926001}
   - component: {fileID: 472926003}
   - component: {fileID: 472926002}
+  - component: {fileID: 472926004}
   m_Layer: 5
   m_Name: Arrow3
   m_TagString: Untagged
@@ -655,6 +656,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472926000}
   m_CullTransparentMesh: 1
+--- !u!114 &472926004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472926000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c4c883504c74aa130ddc0ee807a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
 --- !u!1 &535960305
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +759,7 @@ GameObject:
   - component: {fileID: 656130326}
   - component: {fileID: 656130328}
   - component: {fileID: 656130327}
+  - component: {fileID: 656130329}
   m_Layer: 5
   m_Name: Arrow4
   m_TagString: Untagged
@@ -810,6 +825,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656130325}
   m_CullTransparentMesh: 1
+--- !u!114 &656130329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656130325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c4c883504c74aa130ddc0ee807a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
 --- !u!1 &689810328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1042,7 @@ GameObject:
   - component: {fileID: 723103989}
   - component: {fileID: 723103991}
   - component: {fileID: 723103990}
+  - component: {fileID: 723103992}
   m_Layer: 5
   m_Name: Arrow1
   m_TagString: Untagged
@@ -1079,6 +1108,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723103988}
   m_CullTransparentMesh: 1
+--- !u!114 &723103992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723103988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c4c883504c74aa130ddc0ee807a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1 &723226716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +1674,7 @@ MonoBehaviour:
   _arrowNum: 5
   _arrowList: []
   _arrowPosition: {fileID: 2134718199}
-  RoundCount: 1
+  RoundCount: 0
   IsCreating: 0
 --- !u!1 &1297483298
 GameObject:
@@ -1712,6 +1754,7 @@ GameObject:
   - component: {fileID: 1321948219}
   - component: {fileID: 1321948221}
   - component: {fileID: 1321948220}
+  - component: {fileID: 1321948222}
   m_Layer: 5
   m_Name: Arrow2
   m_TagString: Untagged
@@ -1777,6 +1820,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321948218}
   m_CullTransparentMesh: 1
+--- !u!114 &1321948222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c4c883504c74aa130ddc0ee807a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!1 &1418042843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2304,7 @@ GameObject:
   - component: {fileID: 1755427534}
   - component: {fileID: 1755427536}
   - component: {fileID: 1755427535}
+  - component: {fileID: 1755427537}
   m_Layer: 5
   m_Name: Arrow5
   m_TagString: Untagged
@@ -2313,6 +2370,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755427533}
   m_CullTransparentMesh: 1
+--- !u!114 &1755427537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755427533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c4c883504c74aa130ddc0ee807a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
 --- !u!1 &1876855249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,11 +2485,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VisibleArrowList:
-  - {fileID: 723103990}
-  - {fileID: 1321948220}
-  - {fileID: 472926002}
-  - {fileID: 656130327}
-  - {fileID: 1755427535}
+  - {fileID: 723103992}
+  - {fileID: 1321948222}
+  - {fileID: 472926004}
+  - {fileID: 656130329}
+  - {fileID: 1755427537}
 --- !u!1 &1979090192
 GameObject:
   m_ObjectHideFlags: 0

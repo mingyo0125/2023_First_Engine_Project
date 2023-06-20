@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
         if (keyCode == ArrowSpawner.Instance._arrowList[succesArrowCount].keyCode.ToString())
         {
             PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[succesArrowCount]);
-            VisibleArrowManager.Instance.VisibleArrowList[succesArrowCount].enabled = false;
+            VisibleArrowManager.Instance.VisibleArrowList[succesArrowCount].gameObject.SetActive(false);
             succesArrowCount++;
         }
         else
