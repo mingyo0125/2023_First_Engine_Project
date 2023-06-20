@@ -36,11 +36,6 @@ public class VisibleArrowManager : MonoBehaviour
         {
             VisibleArrowList[i].gameObject.SetActive(true);
 
-            if (ArrowSpawner.Instance.RoundCount == 5)
-            {
-                if (i == 5) { ArrowSpawner.Instance.RoundCount = 1; }
-            } 
-
             yield return new WaitForSeconds(0.3f);
         }
 

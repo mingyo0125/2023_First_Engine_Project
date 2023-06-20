@@ -1,3 +1,4 @@
+using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using System;
 using System.Collections;
@@ -22,9 +23,9 @@ public class Enemy : PoolableMono
 
     private IEnumerator EnemyDieCorou()
     {
-        _rigidbody.velocity = new Vector3(transform.position.x, transform.position.y * - 5f, transform.position.z);
+        //_rigidbody.velocity = new Vector3(transform.position.x, transform.position.y * - 5f, transform.position.z);
+        transform.DOMoveY(-1f, 0.5f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(1f);
-        _rigidbody.velocity = Vector3.zero;
         EnemySpawner.Instance.EnemyKill();
     }
 }

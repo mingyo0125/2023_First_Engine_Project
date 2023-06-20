@@ -25,10 +25,8 @@ public class VisiableArrow : MonoBehaviour
         if (ArrowSpawner.Instance.RoundCount == 5) //º¸½º
         {
             StartCoroutine(ChangeArrow());
-        }
-        else
-        {
-            _image.color = Color.white;
+            //ArrowSpawner.Instance.RoundCount = 1;
+            //_image.color = Color.white;
         }
     }
 
@@ -63,14 +61,16 @@ public class VisiableArrow : MonoBehaviour
 
     private IEnumerator ChangeArrow()
     {
-        KeyCode randKey;
-
         _image.color = Color.red;
 
         while (true)
         {
-            randKey = arr[Random.Range(0, 4)];
-            keyCode = keyCode == randKey ? arr[Random.Range(0, 4)] : randKey;
+            KeyCode randKey = arr[Random.Range(0, 4)];
+            while (randKey != keyCode) 
+            {
+                randKey = arr[Random.Range(0, 4)];
+            }
+            keyCode = randKey;
             SetArrowRotation();
             yield return new WaitForSeconds(2f);
         }

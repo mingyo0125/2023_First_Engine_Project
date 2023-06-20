@@ -19,6 +19,11 @@ public class InputManager : MonoBehaviour
         {
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
+            //if (ArrowSpawner.Instance.RoundCount == 5)
+            //{
+            //    //ArrowSpawner.Instance.RoundCount = 1;
+            //    Debug.Log("1");
+            //}
             SuccessEvent?.Invoke();
         }
     }
@@ -26,6 +31,7 @@ public class InputManager : MonoBehaviour
     public void ClickButton(string keyCode)
     {
         if (ArrowSpawner.Instance.IsCreating) { return; }
+
         if (keyCode == ArrowSpawner.Instance._arrowList[succesArrowCount].keyCode.ToString())
         {
             PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[succesArrowCount]);
