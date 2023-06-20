@@ -10,8 +10,6 @@ public class Enemy : PoolableMono
 
     public override void Init()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-
         transform.SetParent(GameObject.Find("Main Camera").transform, false);
     }
 
