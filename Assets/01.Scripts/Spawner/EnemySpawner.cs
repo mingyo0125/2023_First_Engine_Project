@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         int rand = Random.Range(0, _enemyListSO.List.Count);
 
         CurEnemy = PoolManager.Instance.Pop(_enemyListSO.List[rand].prefab.name) as Enemy;
-        CurEnemy.transform.localPosition = new Vector3(0.1f, -0.25f, 3.7f);
+        CurEnemy.transform.localPosition = new Vector3(0.1f, -2f, 3.7f);
     }
 
     public void EnemyKill()

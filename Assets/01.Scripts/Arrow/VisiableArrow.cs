@@ -13,6 +13,8 @@ public class VisiableArrow : MonoBehaviour
 
     private readonly KeyCode[] arr = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.UpArrow };
 
+    private bool isBoss = false;
+
     Image _image;
 
     private void Awake()
@@ -22,9 +24,15 @@ public class VisiableArrow : MonoBehaviour
 
     private void Update()
     {
-        if (ArrowSpawner.Instance.RoundCount == 5) //보스
+        if (isBoss)
         {
             StartCoroutine(ChangeArrow());
+            isBoss = false;
+            return;
+        }
+        if (ArrowSpawner.Instance.RoundCount == 5) //보스
+        {
+            isBoss = true;
             //ArrowSpawner.Instance.RoundCount = 1;
             //_image.color = Color.white;
         }
@@ -61,6 +69,7 @@ public class VisiableArrow : MonoBehaviour
 
     private IEnumerator ChangeArrow()
     {
+        Debug.Log(name);
         _image.color = Color.red;
 
         while (true)

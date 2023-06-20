@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Enemy : PoolableMono
 {
+    float amplitude;
 
     public override void Init()
     {
@@ -23,5 +24,11 @@ public class Enemy : PoolableMono
         transform.DOMoveY(-1f, 0.5f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(1f);
         EnemySpawner.Instance.EnemyKill();
+    }
+
+    private void Update()
+    {
+        amplitude = Mathf.Sin(Time.time) * 0.1f - 0.35f;
+        transform.localPosition = new Vector3(0.1f, amplitude, 3.7f);
     }
 }

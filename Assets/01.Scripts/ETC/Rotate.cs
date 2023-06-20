@@ -9,6 +9,6 @@ public class Rotate : MonoBehaviour
 
     private void LateUpdate()
     {
-        _camera.transform.Rotate(0, transform.position.y + -0.1f, 0);
+        _camera.transform.Rotate(0, transform.position.y + -0.05f, 0);
     }
 }
