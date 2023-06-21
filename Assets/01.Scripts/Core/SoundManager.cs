@@ -16,14 +16,9 @@ public class SoundManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SFXPlay(AudioClip clip)
+    public void SFXPlay(string name)
     {
-        GameObject soundclip = new GameObject(clip.name);
-        AudioSource sound = soundclip.GetComponent<AudioSource>();
-        sound.clip = clip;
-        sound.Play();
-
-        Destroy(soundclip, clip.length);
+        PoolManager.Instance.Pop(name);
     }
 
 }

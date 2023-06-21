@@ -21,12 +21,12 @@ public class Arrow : PoolableMono
 
         if(ArrowSpawner.Instance.RoundCount == 5) //º¸½º
         {
-            StartCoroutine(ChangeArrow());
+            //StartCoroutine(ChangeArrow());
         }
         else
         {
-            _spriteRenderer.color = Color.white;
         }
+            _spriteRenderer.color = Color.white;
     }
 
     private void SetArrowRotation()

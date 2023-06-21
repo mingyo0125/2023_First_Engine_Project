@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
         {
             FX fX = PoolManager.Instance.Pop("MuzzleFX") as FX;
             fX.transform.position = FirePoint.position;
+            SoundManager.Instance.SFXPlay("Gun");
 
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();

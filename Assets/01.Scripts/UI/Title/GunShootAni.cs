@@ -18,4 +18,14 @@ public class GunShootAni : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _animator.SetTrigger("StartTrigger");
     }
+
+    public void GunSound()
+    {
+        SoundManager.Instance.SFXPlay("Gun");
+    }
+
+    public void ReroadSound()
+    {
+        SoundManager.Instance.SFXPlay("Reload");
+    }
 }

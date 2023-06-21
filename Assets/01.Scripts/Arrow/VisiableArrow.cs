@@ -31,7 +31,7 @@ public class VisiableArrow : MonoBehaviour
         }
         if (ArrowSpawner.Instance.RoundCount == 5) //º¸½º
         {
-            isBoss = true;
+            //isBoss = true;
             //ArrowSpawner.Instance.RoundCount = 1;
             //_image.color = Color.white;
         }
@@ -64,6 +64,7 @@ public class VisiableArrow : MonoBehaviour
         Vector3 rotateVec = _image.rectTransform.eulerAngles;
         rotateVec.z = value;
         _image.rectTransform.eulerAngles = rotateVec;
+
     }
 
     private IEnumerator ChangeArrow()
