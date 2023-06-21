@@ -10,10 +10,18 @@ public class Enemy : PoolableMono
     float amplitude;
     bool isDie;
 
+    Outline _outline;
+
     public override void Init()
     {
         isDie = false;
         transform.SetParent(GameObject.Find("Main Camera").transform, false);
+
+        _outline = GetComponent<Outline>();
+
+        if (ArrowSpawner.Instance.RoundCount == 5) { _outline.OutlineColor = Color.red; }
+        
+       
     }
 
     public void Die()

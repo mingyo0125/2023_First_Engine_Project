@@ -14,7 +14,7 @@ public class GunScope : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
 
-        ScopeOn();
+        //ScopeOn();
     }
 
     public void ScopeOff()
