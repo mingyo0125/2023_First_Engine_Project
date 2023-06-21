@@ -40,7 +40,6 @@ public class ArrowSpawner : MonoBehaviour
         {
             Arrow arrow = PoolManager.Instance.Pop("Arrow") as Arrow;
 
-            arrow.transform.position = new Vector3(_arrowPosition.transform.position.x, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z * 2.5f * i);
             _arrowList.Add(arrow);
 
             VisibleArrowManager.Instance.VisibleArrowList[i].SetArrowRotation();
@@ -65,5 +64,11 @@ public class ArrowSpawner : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(InitArrow());
     }
+
+    public void RessetArrow()
+    {
+        StartCoroutine(InitArrow());
+        VisibleArrowManager.Instance.VisibleArrowInit();
+    }    
 
 }

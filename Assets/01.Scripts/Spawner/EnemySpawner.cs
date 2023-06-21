@@ -43,6 +43,11 @@ public class EnemySpawner : MonoBehaviour
         PoolManager.Instance.Push(CurEnemy);
         EnemySpawnEvent?.Invoke();
         VisibleArrowManager.Instance.VisibleArrowInit();
+    }
 
+    public void ResetEnemy()
+    {
+        EnemyKill();
+        CurEnemy = null;
     }
 }
