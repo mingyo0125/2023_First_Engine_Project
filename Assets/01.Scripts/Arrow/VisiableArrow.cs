@@ -39,7 +39,7 @@ public class VisiableArrow : MonoBehaviour
 
     public void SetArrowRotation()
     {
-        _image.enabled = false;
+        _image.enabled = true;
 
         float value = 0;
 
@@ -65,8 +65,6 @@ public class VisiableArrow : MonoBehaviour
         rotateVec.z = value;
         _image.rectTransform.eulerAngles = rotateVec;
 
-        _image.enabled = true;
-
     }
 
     private IEnumerator ChangeArrow()
@@ -86,5 +84,5 @@ public class VisiableArrow : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
 
-    }   
+    }
 }

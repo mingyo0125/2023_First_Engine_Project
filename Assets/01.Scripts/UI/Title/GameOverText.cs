@@ -16,10 +16,13 @@ public class GameOverText : MonoBehaviour
         _scoreText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void InitText()
+    private void Update()
     {
-        _score = InputManager.Instance.bestScore;
-        _scoreText.SetText(_score.ToString());
-        InputManager.Instance.bestScore = 0;
+        if(_score == 0)
+        {
+            _score = InputManager.Instance.Score;
+            _scoreText.SetText(_score.ToString());
+            _score = 0;
+        }
     }
 }

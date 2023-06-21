@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,11 +55,6 @@ public class GameManager : MonoBehaviour
     public void TimeControl()
     {
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-    }
-
-    public void SceneReload()
-    {
-        SceneManager.LoadScene("SampleScene");
     }
 
 

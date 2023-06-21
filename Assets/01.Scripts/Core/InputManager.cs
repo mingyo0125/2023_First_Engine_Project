@@ -27,8 +27,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Transform FirePoint;
 
-    public int bestScore;
-    public int curScore;
+    public int Score;
 
     private void Update()
     {
@@ -38,14 +37,8 @@ public class InputManager : MonoBehaviour
             fX.transform.position = FirePoint.position;
             SoundManager.Instance.SFXPlay("Gun");
 
-            curScore++;
-
-            if(curScore >= bestScore)
-            {
-                bestScore = curScore;
-                PlayerPrefs.SetInt("Score", bestScore);
-            }
-
+            Score++;
+            PlayerPrefs.SetInt("Score", Score);
 
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
