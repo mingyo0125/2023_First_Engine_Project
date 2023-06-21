@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Transform FirePoint;
 
+    private int score;
+
     private void Update()
     {
         if (succesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
@@ -23,6 +25,9 @@ public class InputManager : MonoBehaviour
             FX fX = PoolManager.Instance.Pop("MuzzleFX") as FX;
             fX.transform.position = FirePoint.position;
             SoundManager.Instance.SFXPlay("Gun");
+
+            score++;
+            PlayerPrefs.SetInt("Score", score);
 
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
