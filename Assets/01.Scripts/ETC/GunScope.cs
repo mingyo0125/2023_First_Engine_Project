@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GunScope : MonoBehaviour
 
     private readonly int hashScope = Animator.StringToHash("IsScope");
     private readonly int hashEnd = Animator.StringToHash("IsEnd");
+    private readonly int hashShoot = Animator.StringToHash("ShootTrigger");
 
     private void Awake()
     {
@@ -28,13 +30,14 @@ public class GunScope : MonoBehaviour
         _animator.SetBool(hashScope, true);
     }
 
-    public void ScopeOnAniEnd()
-    {
-    }
-
     public void ScopeOffAniEnd()
     {
         _animator.SetBool(hashEnd, true);
+    }
+
+    public void Rebound()
+    {
+        _animator.SetTrigger(hashShoot);
     }
 
 }
