@@ -6,6 +6,17 @@ using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Debug.LogError("InputManager 2°³");
+        }
+        Instance = this;
+    }
+
     public UnityEvent FailEvent;
     public UnityEvent SuccessEvent;
     //public Action EnemyDieAction;
@@ -16,7 +27,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Transform FirePoint;
 
-    private int score;
+    public int Score;
 
     private void Update()
     {
@@ -26,8 +37,8 @@ public class InputManager : MonoBehaviour
             fX.transform.position = FirePoint.position;
             SoundManager.Instance.SFXPlay("Gun");
 
-            score++;
-            PlayerPrefs.SetInt("Score", score);
+            Score++;
+            PlayerPrefs.SetInt("Score", Score);
 
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();

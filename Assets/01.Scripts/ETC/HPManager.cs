@@ -40,6 +40,11 @@ public class HPManager : MonoBehaviour
         StartCoroutine(HpMinus());
     }
 
+    public void StartHpMinus()
+    {
+        StartCoroutine(HpMinus());
+    }
+
     public IEnumerator HpMinus()
     {
         while (true)
