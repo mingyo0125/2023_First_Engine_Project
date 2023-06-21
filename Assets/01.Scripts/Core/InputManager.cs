@@ -13,10 +13,16 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private int succesArrowCount = 0;
 
+    [SerializeField]
+    private Transform FirePoint;
+
     private void Update()
     {
         if (succesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
         {
+            FX fX = PoolManager.Instance.Pop("MuzzleFX") as FX;
+            fX.transform.position = FirePoint.position;
+
             succesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
             //if (ArrowSpawner.Instance.RoundCount == 5)
