@@ -28,7 +28,16 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Start()
     {
-        Succes();
+        InitArrowcStart();
+    }
+
+    public void InitArrowcStart()
+    {
+        for(int i = 0; i < _arrowNum; i++)
+        {
+            VisibleArrowManager.Instance.VisibleArrowList[i].gameObject.SetActive(false);
+        }
+        StartCoroutine(InitArrow());
     }
 
     private IEnumerator InitArrow()
@@ -38,6 +47,7 @@ public class ArrowSpawner : MonoBehaviour
 
         for (int i = 0; i < _arrowNum; i++)
         {
+            VisibleArrowManager.Instance.VisibleArrowList[i].gameObject.SetActive(true);
             Arrow arrow = PoolManager.Instance.Pop("Arrow") as Arrow;
 
             arrow.transform.position = new Vector3(_arrowPosition.transform.position.x, _arrowPosition.transform.position.y, _arrowPosition.transform.position.z * 2.5f * i);

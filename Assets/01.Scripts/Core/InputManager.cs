@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
     //public Action EnemyDieAction;
 
     [SerializeField]
-    private int succesArrowCount = 0;
+    public int SuccesArrowCount = 0;
 
     [SerializeField]
     private Transform FirePoint;
@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (succesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
+        if (SuccesArrowCount == ArrowSpawner.Instance._arrowNum && !ArrowSpawner.Instance.IsCreating)
         {
             FX fX = PoolManager.Instance.Pop("MuzzleFX") as FX;
             fX.transform.position = FirePoint.position;
@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
             Score++;
             PlayerPrefs.SetInt("Score", Score);
 
-            succesArrowCount = 0;
+            SuccesArrowCount = 0;
             EnemySpawner.Instance.CurEnemy.Die();
             //if (ArrowSpawner.Instance.RoundCount == 5)
             //{
@@ -55,11 +55,11 @@ public class InputManager : MonoBehaviour
     {
         if (ArrowSpawner.Instance.IsCreating) { return; }
 
-        if (keyCode == ArrowSpawner.Instance._arrowList[succesArrowCount].keyCode.ToString())
+        if (keyCode == ArrowSpawner.Instance._arrowList[SuccesArrowCount].keyCode.ToString())
         {
-            PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[succesArrowCount]);
-            VisibleArrowManager.Instance.VisibleArrowList[succesArrowCount].gameObject.SetActive(false);
-            succesArrowCount++;
+            PoolManager.Instance.Push(ArrowSpawner.Instance._arrowList[SuccesArrowCount]);
+            VisibleArrowManager.Instance.VisibleArrowList[SuccesArrowCount].gameObject.SetActive(false);
+            SuccesArrowCount++;
         }
         else
         {

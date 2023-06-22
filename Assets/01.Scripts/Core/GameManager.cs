@@ -57,5 +57,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 
+    public void Init()
+    {
+        InputManager.Instance.SuccesArrowCount = 0;
+        ArrowSpawner.Instance.RoundCount = 0;
+        InputManager.Instance.Score = 0;
+    }
+
 
 }
